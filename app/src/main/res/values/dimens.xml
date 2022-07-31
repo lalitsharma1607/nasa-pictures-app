@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_offset">10dp</dimen>
+    <dimen name="corner_radius">3dp</dimen>
+    <dimen name="card_margin">5dp</dimen>
+    <dimen name="elevation">1dp</dimen>
+</resources>
