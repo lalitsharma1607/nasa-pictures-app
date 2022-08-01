@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="item_offset">10dp</dimen>
+    <dimen name="item_offset">5dp</dimen>
     <dimen name="corner_radius">3dp</dimen>
     <dimen name="card_margin">5dp</dimen>
     <dimen name="elevation">1dp</dimen>
+    <dimen name="full_image_height">400dp</dimen>
+    <dimen name="copyright_font_size">12sp</dimen>
+    <dimen name="image_title_font_size">16sp</dimen>
+    <dimen name="description_font_size">16sp</dimen>
+    <dimen name="item_spacing_vertical">10dp</dimen>
+    <dimen name="copyright_padding">10dp</dimen>
+    <dimen name="padding_desc">10dp</dimen>
 </resources>

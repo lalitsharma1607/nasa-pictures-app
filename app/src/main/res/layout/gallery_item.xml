@@ -5,9 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     app:cardCornerRadius="@dimen/corner_radius"
-    android:layout_margin="@dimen/card_margin"
     app:cardElevation="@dimen/elevation"
-    android:layout_height="wrap_content">
+    android:clickable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:layout_height="wrap_content"
+    android:focusable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

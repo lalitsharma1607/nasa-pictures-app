@@ -1,8 +1,6 @@
 package com.nasapictures.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,7 +9,7 @@ import com.nasapictures.databinding.ActivityMainBinding
 import com.nasapictures.utils.ItemOffsetDecoration
 import com.nasapictures.viewmodel.MediaViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var adapter: MediaAdapter = MediaAdapter(arrayListOf())
@@ -22,7 +20,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider.AndroidViewModelFactory(application).create(MediaViewModel::class.java)
+        viewModel = ViewModelProvider.AndroidViewModelFactory(application)
+            .create(MediaViewModel::class.java)
 
         initViews()
         observerLiveData()
@@ -34,11 +33,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observerLiveData() {
-        viewModel.mediaItems.observe(this) {
-            Log.d("MainActivity", "size ${it?.size}")
-            adapter.addMoreItems(it.orEmpty())
+        viewModel.mediaItems.observe(this) { mediaItems ->
+            adapter.addMoreItems(mediaItems.orEmpty().sortedByDescending { item -> item.getDate() })
             showProgressBar(false)
+            showNoItemMessage(mediaItems.isNullOrEmpty())
         }
+    }
+
+    private fun showNoItemMessage(show: Boolean) {
+        binding.noItemText.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     private fun initViews() {
@@ -49,7 +52,7 @@ class MainActivity : AppCompatActivity() {
     private fun setUpRecyclerView() {
         val layoutManager = GridLayoutManager(this, 2)
         binding.mediaList.layoutManager = layoutManager
-        binding.mediaList.addItemDecoration(ItemOffsetDecoration(this,   R.dimen.item_offset))
+        binding.mediaList.addItemDecoration(ItemOffsetDecoration(this, R.dimen.item_offset))
         binding.mediaList.adapter = adapter
     }
 

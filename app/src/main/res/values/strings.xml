@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">NASA Pictures</string>
+    <string name="no_media_found">No media found</string>
+    <string name="copyright_prefix">\@ %s</string>
+    <string name="failed_to_load_image">Failed to load image</string>
 </resources>
